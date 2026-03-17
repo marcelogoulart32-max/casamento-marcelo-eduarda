@@ -13,7 +13,7 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
       color: #ffffff;
       min-height: 100vh;
       display: flex;
@@ -22,6 +22,7 @@
       text-align: center;
       background: url("FOTO_DE_FUNDO.jpg") no-repeat center center fixed;
       background-size: cover;
+      padding: 24px;
     }
 
     .overlay {
@@ -34,67 +35,101 @@
     .container {
       position: relative;
       z-index: 1;
-      max-width: 650px;
-      padding: 24px;
+      max-width: 720px;
+      width: 100%;
+      padding: 32px 32px 28px;
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     h1 {
-      font-size: 2rem;
-      margin-bottom: 12px;
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
     h2 {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      font-weight: normal;
-      opacity: 0.9;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      font-weight: 400;
+      opacity: 0.95;
     }
 
     p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 24px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 28px;
     }
 
     .button {
       display: inline-block;
-      padding: 14px 30px;
+      padding: 16px 40px;
       background-color: #c78ea7;
       color: #ffffff;
       text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: background-color 0.25s ease, transform 0.15s ease;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
     }
 
     .button:hover {
       background-color: #b06f8c;
       transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
     }
 
     .button:active {
       transform: translateY(0);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
     }
 
     .note {
-      font-size: 0.9rem;
-      opacity: 0.9;
-      margin-top: 12px;
+      font-size: 0.95rem;
+      opacity: 0.95;
+      margin-top: 18px;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1.6rem;
-      }
-      h2 {
-        font-size: 1rem;
-      }
-      p {
-        font-size: 0.95rem;
-      }
-      .container {
+      body {
         padding: 16px;
+      }
+
+      .container {
+        padding: 24px 18px 22px;
+        border-radius: 12px;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 18px;
+      }
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 24px;
+      }
+
+      .button {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1rem;
+        padding: 14px 20px;
+      }
+
+      .note {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -110,7 +145,7 @@
       Queremos guardar cada abraço, sorriso e momento especial ao lado de vocês.
       <br><br>
       Clique no botão abaixo para enviar suas fotos, vídeos ou uma mensagem especial.
-      Ao clicar para enviar, poderá gravar na hora
+      Ao clicar para enviar, você poderá gravar na hora
       ou escolher da sua galeria.
     </p>
 
