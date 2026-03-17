@@ -1,269 +1,184 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="Envie suas fotos, vídeos e mensagens para o casamento de Marcelo & Eduarda.">
   <title>Casamento Marcelo & Eduarda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Envie suas fotos, vídeos e mensagens para o casamento de Marcelo & Eduarda.">
 
   <style>
-    :root{
-      /* === Ajuste rápido da transparência do card ===
-         Menor = mais transparente (ex: 0.10)
-         Maior = menos transparente (ex: 0.18) */
-      --card-alpha: 0.12;
-
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.78);
-
-      /* Card claro e transparente (glass) */
-      --card-bg: rgba(255,255,255,var(--card-alpha));
-      --card-border: rgba(255,255,255,.28);
-
-      /* Overlay para garantir leitura mesmo com card transparente */
-      --overlay-top: rgba(0,0,0,.18);
-      --overlay-bottom: rgba(0,0,0,.58);
-
-      --shadow: 0 18px 50px rgba(0,0,0,.45);
-
-      --accent: #c78ea7;
-      --accent-hover: #b06f8c;
-
-      --radius: 20px;
-    }
-
-    *{ box-sizing: border-box; }
-    html, body{ height: 100%; }
-
-    body{
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--text);
-
-      background: url("FOTO_DE_FUNDO.jpg") center / cover no-repeat fixed;
+      padding: 0;
     }
 
-    /* Overlay leve (não “mata” a foto, mas ajuda MUITO na leitura) */
-    .overlay{
+    body {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url("FOTO_DE_FUNDO.jpg") no-repeat center center fixed;
+      background-size: cover;
+      padding: 32px 16px;
+    }
+
+    /* Mantém a legibilidade mesmo SEM cartão */
+    .overlay {
       position: fixed;
       inset: 0;
-      background:
-        linear-gradient(to bottom, var(--overlay-top), var(--overlay-bottom));
+      background: rgba(0, 0, 0, 0.58);
       z-index: 0;
     }
 
-    main{
+    /* ✅ CARTÃO “REMOVIDO” (100% transparente) MAS COM O MESMO TAMANHO */
+    .container {
       position: relative;
       z-index: 1;
 
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-
-      /* espaçamento seguro em celulares com notch */
-      padding:
-        calc(18px + env(safe-area-inset-top))
-        calc(14px + env(safe-area-inset-right))
-        calc(22px + env(safe-area-inset-bottom))
-        calc(14px + env(safe-area-inset-left));
-    }
-
-    /* ✅ Mobile-first: card grande no telefone */
-    .card{
-      width: min(94vw, 560px);
-      border-radius: var(--radius);
-
-      /* Card mais “alto” e confortável no mobile */
-      padding: 26px 18px 20px;
-
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      box-shadow: var(--shadow);
-
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-
-      text-align: center;
-    }
-
-    h1{
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      font-weight: 850;
-
-      /* Maior no celular sem quebrar demais */
-      font-size: clamp(1.35rem, 1.05rem + 2.4vw, 2.15rem);
-      line-height: 1.15;
-    }
-
-    h2{
-      margin: 10px 0 0;
-      font-weight: 500;
-      color: var(--muted);
-      font-size: clamp(1.00rem, .95rem + .6vw, 1.25rem);
-      line-height: 1.3;
-    }
-
-    .divider{
-      width: min(340px, 92%);
-      height: 1px;
-      margin: 16px auto 14px;
-      background: rgba(255,255,255,.18);
-    }
-
-    /* Texto bem organizado e com largura boa de leitura */
-    .copy{
-      margin: 0 auto;
-      width: min(42ch, 100%);
-      display: grid;
-      gap: 10px;
-    }
-
-    .copy p{
-      margin: 0;
-      font-size: 1.05rem;
-      line-height: 1.65;
-      color: var(--text);
-      text-wrap: pretty;
-    }
-
-    /* Lista curtinha (mais “escaneável” no celular) */
-    .copy ul{
-      list-style: none;
-      padding: 0;
-      margin: 2px 0 0;
-      display: grid;
-      gap: 6px;
-      color: var(--muted);
-      font-size: 1.00rem;
-      line-height: 1.5;
-    }
-    .copy li::before{
-      content: "• ";
-      color: rgba(255,255,255,.85);
-    }
-
-    .cta{
-      margin-top: 16px;
-      display: grid;
-      gap: 10px;
-      justify-items: center;
-    }
-
-    /* Botão grande (mobile-friendly) */
-    .button{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
+      max-width: 560px;
       width: 100%;
-      max-width: 380px;
+      padding: 40px 36px 32px;
 
-      padding: 16px 18px;
+      /* Removendo o visual do cartão */
+      background: transparent;
+      border: none;
+      border-radius: 20px;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
 
-      border-radius: 999px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
+    /* Um “seguro” para o texto não sumir no fundo */
+    .container h1,
+    .container h2,
+    .container p,
+    .container .note {
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+    }
 
-      font-weight: 850;
-      letter-spacing: .08em;
+    h1 {
+      font-size: 2.7rem;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      font-size: 0.98rem;
+    }
 
-      box-shadow: 0 14px 28px rgba(0,0,0,.30);
-      transition: transform .15s ease, background-color .2s ease, box-shadow .2s ease;
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 28px;
+      font-weight: 400;
+      opacity: 0.95;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.9;
+      margin-bottom: 32px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 18px 44px;
+      background-color: #c78ea7;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+    }
+
+    .button:hover {
+      background-color: #b06f8c;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .button:active {
       transform: translateY(0);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
     }
 
-    .button:hover{
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 18px 34px rgba(0,0,0,.34);
+    .note {
+      font-size: 1rem;
+      opacity: 0.95;
+      margin-top: 22px;
     }
 
-    .button:active{
-      transform: translateY(0);
-      box-shadow: 0 12px 26px rgba(0,0,0,.28);
-    }
+    @media (max-width: 600px) {
+      body {
+        padding: 24px 12px;
+      }
 
-    .button:focus-visible{
-      outline: 3px solid rgba(199,142,167,.55);
-      outline-offset: 3px;
-    }
+      /* Mantém o mesmo “tamanho/estrutura” do seu responsivo */
+      .container {
+        padding: 28px 18px 24px;
+        border-radius: 16px;
+        max-width: 100%;
+      }
 
-    .note{
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-      line-height: 1.45;
-    }
+      h1 {
+        font-size: 2.1rem;
+      }
 
-    /* Ajustes para telas bem pequenas */
-    @media (max-width: 360px){
-      .card{ padding: 22px 16px 18px; border-radius: 16px; }
-      .copy p{ font-size: 1.02rem; }
-      .copy ul{ font-size: .98rem; }
-      .button{ font-size: .95rem; }
-    }
+      h2 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+      }
 
-    /* Desktop/tablet: dá um pouco mais de “respiro” */
-    @media (min-width: 700px){
-      .card{ padding: 34px 28px 26px; }
-      .divider{ margin: 18px auto 16px; }
-      .cta{ margin-top: 18px; }
-    }
+      p {
+        font-size: 1.05rem;
+        margin-bottom: 26px;
+      }
 
-    @media (prefers-reduced-motion: reduce){
-      .button{ transition: none; }
+      .button {
+        width: 100%;
+        max-width: 100%;
+        font-size: 1.05rem;
+        padding: 16px 18px;
+      }
+
+      .note {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="overlay" aria-hidden="true"></div>
+  <div class="overlay"></div>
 
-  <main>
-    <section class="card" aria-label="Envio de fotos e mensagens do casamento">
-      <h1>Deixe sua mensagem para nós</h1>
-      <h2>Casamento Marcelo & Eduarda</h2>
+  <div class="container">
+    <h1>Deixe sua mensagem para nós</h1>
+    <h2>Casamento Marcelo & Eduarda</h2>
 
-      <div class="divider" aria-hidden="true"></div>
+    <p>
+      Queremos guardar cada abraço, sorriso e momento especial ao lado de vocês.
+      <br><br>
+      Clique no botão abaixo para enviar suas fotos, vídeos ou uma mensagem especial.
+      Ao clicar para enviar, você poderá gravar na hora
+      ou escolher da sua galeria.
+    </p>
 
-      <div class="copy">
-        <p>
-          Queremos guardar cada abraço, sorriso e momento especial ao lado de vocês.
-        </p>
+    <a
+      class="button"
+      href="https://forms.gle/d2B3xZqpjX2CqhDWA"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Enviar fotos e vídeos
+    </a>
 
-        <p>
-          Envie pelo formulário:
-        </p>
-
-        <ul>
-          <li>Fotos</li>
-          <li>Vídeos</li>
-          <li>Uma mensagem especial</li>
-        </ul>
-
-        <p>
-          Você pode gravar na hora ou escolher da sua galeria.
-        </p>
-      </div>
-
-      <div class="cta">
-        <a
-          class="button"
-          href="https://forms.gle/d2B3xZqpjX2CqhDWA"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Enviar fotos e vídeos
-        </a>
-
-        <p class="note">Obrigado por fazer parte desse momento tão especial.</p>
-      </div>
-    </section>
-  </main>
+    <div class="note">
+      Obrigado por fazer parte desse momento tão especial. 💍
+    </div>
+  </div>
 </body>
 </html>
