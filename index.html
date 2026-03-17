@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Casamento Marcelo & Eduarda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Envie suas fotos, vídeos e mensagens para o casamento de Marcelo & Eduarda.">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url("FOTO_DE_FUNDO.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 650px;
+      padding: 24px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: normal;
+      opacity: 0.9;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 30px;
+      background-color: #c78ea7;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background-color 0.25s ease, transform 0.15s ease;
+    }
+
+    .button:hover {
+      background-color: #b06f8c;
+      transform: translateY(-2px);
+    }
+
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .note {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      h2 {
+        font-size: 1rem;
+      }
+      p {
+        font-size: 0.95rem;
+      }
+      .container {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <h1>Deixe sua mensagem para nós</h1>
+    <h2>Casamento Marcelo & Eduarda</h2>
+
+    <p>
+      Queremos guardar cada abraço, sorriso e momento especial ao lado de vocês.
+      <br><br>
+      Clique no botão abaixo para enviar suas fotos, vídeos ou uma mensagem especial.
+      Se você estiver no celular, ao clicar para enviar o vídeo, poderá gravar na hora
+      ou escolher da sua galeria.
+    </p>
+
+    <!-- Botão que leva direto para o seu Google Forms -->
+    <a
+      class="button"
+      href="https://forms.gle/d2B3xZqpjX2CqhDWA"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Enviar fotos e vídeos
+    </a>
+
+    <div class="note">
+      Obrigado por fazer parte desse momento tão especial. 💍
+    </div>
+  </div>
+</body>
+</html>
