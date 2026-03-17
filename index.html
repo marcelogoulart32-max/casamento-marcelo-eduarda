@@ -24,6 +24,7 @@
       padding: 16px;
     }
 
+    /* Escurece levemente o fundo para dar contraste ao texto */
     .overlay {
       position: fixed;
       inset: 0;
@@ -35,64 +36,85 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 480px; /* foco em mobile, coluna mais estreita */
+      max-width: 520px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 16px;
     }
 
-    .card {
-      background: rgba(20, 20, 35, 0.78);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-      padding: 28px 22px 24px;
+    /* Topo – frase principal isolada */
+    .top-section {
+      text-align: center;
+      margin-top: 12px;
+      padding: 8px 4px;
     }
 
-    .headline {
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      font-size: 2.1rem;
-      margin-bottom: 6px;
-      letter-spacing: 0.04em;
+    .top-section h1 {
+      font-size: 2.2rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
-    h2 {
+    /* Meio – blocos de texto “flutuando” com diferentes alinhamentos */
+    .middle-section {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 8px 0;
+    }
+
+    .block {
+      max-width: 100%;
+    }
+
+    .block p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+    }
+
+    .block-1 {
+      text-align: left;
+      padding-right: 20%;
+    }
+
+    .block-2 {
+      text-align: right;
+      padding-left: 20%;
+    }
+
+    .block-3 {
+      text-align: center;
+      padding: 0 6%;
+    }
+
+    .block-3 h2 {
       font-size: 1.3rem;
       font-weight: 400;
+      margin-bottom: 6px;
       opacity: 0.95;
     }
 
-    .text-block {
-      margin-bottom: 22px;
-      text-align: left;
+    .block-3 span {
+      display: block;
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-top: 4px;
     }
 
-    .text-block p {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      margin-bottom: 12px;
+    .highlight {
+      font-weight: 600;
     }
 
-    .text-block p:last-child {
-      margin-bottom: 0;
-    }
-
-    .center {
+    /* Bottom – botão e agradecimento */
+    .bottom-section {
       text-align: center;
+      padding: 8px 0 16px;
     }
 
     .button-wrapper {
-      margin-top: 10px;
-      margin-bottom: 14px;
-      text-align: center;
+      margin-bottom: 10px;
     }
 
     .button {
@@ -126,34 +148,42 @@
     .note {
       font-size: 0.98rem;
       opacity: 0.95;
-      text-align: center;
       margin-top: 6px;
     }
 
-    /* Desktop / telas maiores: aproveita melhor o espaço, sem perder o foco no mobile */
+    /* Telas maiores – ajusta proporções, mantendo o dinamismo */
     @media (min-width: 768px) {
       body {
         padding: 40px 24px;
       }
 
       .page {
-        max-width: 720px;
+        max-width: 760px;
+        gap: 24px;
       }
 
-      .card {
-        padding: 36px 40px 30px;
+      .top-section h1 {
+        font-size: 2.7rem;
       }
 
-      h1 {
-        font-size: 2.6rem;
-      }
-
-      h2 {
-        font-size: 1.6rem;
-      }
-
-      .text-block p {
+      .block p {
         font-size: 1.1rem;
+      }
+
+      .block-1 {
+        padding-right: 35%;
+      }
+
+      .block-2 {
+        padding-left: 35%;
+      }
+
+      .block-3 h2 {
+        font-size: 1.5rem;
+      }
+
+      .block-3 span {
+        font-size: 1.05rem;
       }
 
       .button {
@@ -172,36 +202,41 @@
   <div class="overlay"></div>
 
   <div class="page">
-    <div class="card">
-      <!-- Cabeçalho -->
-      <div class="headline center">
-        <h1>Deixe sua mensagem</h1>
-        <h2>Casamento Marcelo & Eduarda</h2>
-      </div>
+    <!-- TOPO: frase principal sozinha -->
+    <header class="top-section">
+      <h1>Deixe sua mensagem para nós</h1>
+    </header>
 
-      <!-- Bloco 1: introdução -->
-      <div class="text-block">
+    <!-- MEIO: blocos em posições diferentes -->
+    <main class="middle-section">
+      <section class="block block-1">
         <p>
-          Queremos guardar cada abraço, sorriso e momento especial ao lado de vocês.
+          Queremos guardar cada <span class="highlight">abraço, sorriso e momento especial</span> ao lado de vocês.
         </p>
-        <p>
-          Este espaço foi criado para que você possa compartilhar um pouco desse dia com a gente.
-        </p>
-      </div>
+      </section>
 
-      <!-- Bloco 2: instruções em celular -->
-      <div class="text-block">
+      <section class="block block-2">
         <p>
-          Clique no botão abaixo para enviar suas <strong>fotos</strong>, <strong>vídeos</strong> ou uma
-          <strong>mensagem especial</strong>.
+          Este espaço foi criado para que você possa compartilhar um pouco desse dia conosco,
+          do seu jeito e no seu tempo.
         </p>
-        <p>
-          Se estiver no celular, ao escolher enviar um vídeo, você poderá
-          <strong>gravar na hora</strong> ou selecionar um arquivo da sua galeria.
-        </p>
-      </div>
+      </section>
 
-      <!-- Botão central -->
+      <section class="block block-3">
+        <h2>Como participar</h2>
+        <p>
+          Clique no botão abaixo para enviar suas <span class="highlight">fotos</span>,
+          <span class="highlight">vídeos</span> ou uma <span class="highlight">mensagem especial</span>.
+        </p>
+        <span>
+          No celular, ao escolher o vídeo, você pode <span class="highlight">gravar na hora</span>
+          ou selecionar um arquivo da sua galeria.
+        </span>
+      </section>
+    </main>
+
+    <!-- BOTTOM: botão + frase de agradecimento -->
+    <footer class="bottom-section">
       <div class="button-wrapper">
         <a
           class="button"
@@ -212,12 +247,10 @@
           Enviar fotos e vídeos
         </a>
       </div>
-
-      <!-- Agradecimento -->
       <div class="note">
         Obrigado por fazer parte desse momento tão especial na nossa história. 💍
       </div>
-    </div>
+    </footer>
   </div>
 </body>
 </html>
