@@ -17,12 +17,11 @@
       color: #ffffff;
       min-height: 100vh;
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
-      text-align: center;
       background: url("FOTO_DE_FUNDO.jpg") no-repeat center center fixed;
       background-size: cover;
-      padding: 32px 16px;
+      padding: 16px;
     }
 
     .overlay {
@@ -32,53 +31,85 @@
       z-index: 0;
     }
 
-    .container {
+    .page {
       position: relative;
       z-index: 1;
-      max-width: 560px;      /* mais estreito para o texto não ficar tão comprido */
       width: 100%;
-      padding: 40px 36px 32px;
-      background: rgba(20, 20, 35, 0.72);
+      max-width: 480px; /* foco em mobile, coluna mais estreita */
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: rgba(20, 20, 35, 0.78);
       border-radius: 20px;
       border: 1px solid rgba(255, 255, 255, 0.35);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      padding: 28px 22px 24px;
+    }
+
+    .headline {
+      margin-bottom: 22px;
     }
 
     h1 {
-      font-size: 2.7rem;     /* bem maior */
-      margin-bottom: 12px;
+      font-size: 2.1rem;
+      margin-bottom: 6px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
     h2 {
-      font-size: 1.6rem;
-      margin-bottom: 28px;
+      font-size: 1.3rem;
       font-weight: 400;
       opacity: 0.95;
     }
 
-    p {
-      font-size: 1.1rem;     /* maior */
-      line-height: 1.9;      /* mais espaçamento entre linhas */
-      margin-bottom: 32px;   /* mais espaço abaixo do parágrafo */
+    .text-block {
+      margin-bottom: 22px;
+      text-align: left;
+    }
+
+    .text-block p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin-bottom: 12px;
+    }
+
+    .text-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .button-wrapper {
+      margin-top: 10px;
+      margin-bottom: 14px;
+      text-align: center;
     }
 
     .button {
       display: inline-block;
-      padding: 18px 44px;
+      padding: 16px 26px;
       background-color: #c78ea7;
       color: #ffffff;
       text-decoration: none;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 1.1rem;     /* maior */
+      font-size: 1.05rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
       box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+      width: 100%;
+      max-width: 100%;
     }
 
     .button:hover {
@@ -93,45 +124,46 @@
     }
 
     .note {
-      font-size: 1rem;
+      font-size: 0.98rem;
       opacity: 0.95;
-      margin-top: 22px;
+      text-align: center;
+      margin-top: 6px;
     }
 
-    @media (max-width: 600px) {
+    /* Desktop / telas maiores: aproveita melhor o espaço, sem perder o foco no mobile */
+    @media (min-width: 768px) {
       body {
-        padding: 24px 12px;
+        padding: 40px 24px;
       }
 
-      .container {
-        padding: 28px 18px 24px;
-        border-radius: 16px;
-        max-width: 100%;
+      .page {
+        max-width: 720px;
+      }
+
+      .card {
+        padding: 36px 40px 30px;
       }
 
       h1 {
-        font-size: 2.1rem;
+        font-size: 2.6rem;
       }
 
       h2 {
-        font-size: 1.4rem;
-        margin-bottom: 20px;
+        font-size: 1.6rem;
       }
 
-      p {
-        font-size: 1.05rem;
-        margin-bottom: 26px;
+      .text-block p {
+        font-size: 1.1rem;
       }
 
       .button {
-        width: 100%;
-        max-width: 100%;
-        font-size: 1.05rem;
-        padding: 16px 18px;
+        width: auto;
+        padding: 18px 40px;
+        font-size: 1.1rem;
       }
 
       .note {
-        font-size: 0.95rem;
+        font-size: 1rem;
       }
     }
   </style>
@@ -139,30 +171,52 @@
 <body>
   <div class="overlay"></div>
 
-  <div class="container">
-    <h1>Deixe sua mensagem para nós</h1>
-    <h2>Casamento Marcelo & Eduarda</h2>
+  <div class="page">
+    <div class="card">
+      <!-- Cabeçalho -->
+      <div class="headline center">
+        <h1>Deixe sua mensagem</h1>
+        <h2>Casamento Marcelo & Eduarda</h2>
+      </div>
 
-    <p>
-      Queremos guardar cada abraço, sorriso e momento especial ao lado de vocês.
-      <br><br>
-      Clique no botão abaixo para enviar suas fotos, vídeos ou uma mensagem especial.
-      Ao clicar para enviar, você poderá gravar na hora
-      ou escolher da sua galeria.
-    </p>
+      <!-- Bloco 1: introdução -->
+      <div class="text-block">
+        <p>
+          Queremos guardar cada abraço, sorriso e momento especial ao lado de vocês.
+        </p>
+        <p>
+          Este espaço foi criado para que você possa compartilhar um pouco desse dia com a gente.
+        </p>
+      </div>
 
-    <!-- Botão que leva direto para o seu Google Forms -->
-    <a
-      class="button"
-      href="https://forms.gle/d2B3xZqpjX2CqhDWA"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Enviar fotos e vídeos
-    </a>
+      <!-- Bloco 2: instruções em celular -->
+      <div class="text-block">
+        <p>
+          Clique no botão abaixo para enviar suas <strong>fotos</strong>, <strong>vídeos</strong> ou uma
+          <strong>mensagem especial</strong>.
+        </p>
+        <p>
+          Se estiver no celular, ao escolher enviar um vídeo, você poderá
+          <strong>gravar na hora</strong> ou selecionar um arquivo da sua galeria.
+        </p>
+      </div>
 
-    <div class="note">
-      Obrigado por fazer parte desse momento tão especial. 💍
+      <!-- Botão central -->
+      <div class="button-wrapper">
+        <a
+          class="button"
+          href="https://forms.gle/d2B3xZqpjX2CqhDWA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Enviar fotos e vídeos
+        </a>
+      </div>
+
+      <!-- Agradecimento -->
+      <div class="note">
+        Obrigado por fazer parte desse momento tão especial na nossa história. 💍
+      </div>
     </div>
   </div>
 </body>
